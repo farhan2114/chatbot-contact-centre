@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle & Car Service Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        /* Main Container: Enables the Horizontal Layout */
+        .container {
+            width: 90%; /* Increased width for more space */
+            max-width: 1200px; /* Limits size on very large screens */
+            margin: 20px auto;
+            display: flex; /* Flexbox for horizontal alignment */
+            gap: 40px;
+            flex-wrap: wrap; /* NEW: Allows sections to wrap/stack on small screens */
+        }
+        
+        .section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* NEW: Defines how items share space and handles wrapping */
+            flex: 1 1 450px; /* grow: 1, shrink: 1, base width: 450px */
+            min-width: 300px; /* Ensures a minimum readable width */
+        }
+        
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        /* Adjusted width for inputs */
+        input[type="text"], input[type="email"], input[type="tel"], select, input[type="date"] {
+            width: 98%; 
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* IMPORTANT: Includes padding/border in the element's total width */
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .car-list {
+            list-style: none;
+            padding: 0;
+        }
+        .car-item {
+            border: 1px solid #eee;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .car-item strong {
+            color: #007bff;
+        }
+
+        /* Responsive Breakpoint: Stacks columns on smaller screens (e.g., tablets/phones) */
+        @media (max-width: 960px) {
+            .container {
+                /* When the screen is narrow, let items stack vertically */
+                flex-direction: column; 
+                width: 95%; 
+                gap: 20px;
+            }
+            .section {
+                /* Give each section full width when stacked */
+                flex: 1 1 100%; 
+            }
+            /* Make inputs fill the full width of the stacked section */
+            input[type="text"], input[type="email"], input[type="tel"], select, input[type="date"] {
+                width: 100%; 
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vehicle & Car Management System</h1>
+        <p>Book a Service Slot or View Our Vehicle Catalog</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="section slot-application">
+            <h2>Apply for a Service Slot</h2>
+            <form id="slotForm">
+                <label for="name">Customer Name:</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="john.doe@example.com">
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+
+                <label for="vehicle_reg">Vehicle Reg. Number:</label>
+                <input type="text" id="vehicle_reg" name="vehicle_reg" required placeholder="ABC 123">
+                
+                <label for="service_type">Service Type:</label>
+                <select id="service_type" name="service_type" required>
+                    <option value="">-- Select Service --</option>
+                    <option value="Maintenance">Routine Maintenance</option>
+                    <option value="Repair">Major Repair</option>
+                    <option value="Inspection">Vehicle Inspection</option>
+                </select>
+
+                <label for="preferred_date">Preferred Date:</label>
+                <input type="date" id="preferred_date" name="preferred_date" required>
+                
+                <button type="submit">Submit Slot Request</button>
+            </form>
+        </div>
+        
+        <div class="section vehicle-details">
+            <h2>Vehicle Catalog and Details</h2>
+            <ul class="car-list">
+                <li class="car-item">
+                    <strong>Model:</strong> Toyota Camry (2022) <br>
+                    <strong>Reg. No.:</strong> ABC 123 <br>
+                    <strong>Status:</strong> *In Service* <br>
+                    <p>Details: Full service history available. Scheduled for oil change.</p>
+                </li>
+                <li class="car-item">
+                    <strong>Model:</strong> Honda Civic (2020) <br>
+                    <strong>Reg. No.:</strong> XYZ 789 <br>
+                    <strong>Status:</strong> *Available for Sale* <br>
+                    <p>Details: Low mileage. Certified Pre-Owned. Great condition.</p>
+                </li>
+                <li class="car-item">
+                    <strong>Model:</strong> Ford F-150 (2023) <br>
+                    <strong>Reg. No.:</strong> PQR 456 <br>
+                    <strong>Status:</strong> *Awaiting Inspection* <br>
+                    <p>Details: New arrival. Inspection pending before sale.</p>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+</body>
+</html>
